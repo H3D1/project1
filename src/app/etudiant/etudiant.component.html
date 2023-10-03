@@ -1,0 +1,30 @@
+<!-- {{etudiant}}
+<table>
+        <tr><td><h2><strong>Name: </strong></h2></td><td><h2>  {{etudiant.name}}</h2></td></tr>
+        <tr><td><strong>id: </strong></td><td>  {{etudiant.id}}</td></tr>
+        <tr><td><strong>average: </strong></td><td>  {{etudiant.average}}</td></tr>
+        <tr><td><strong>date: </strong></td><td>  {{etudiant.date | date}}</td></tr>
+        <tr><td><strong>payé: </strong></td><td>  {{etudiant.Paye | currency}}</td></tr>
+</table>
+
+<div>
+    <label><strong>name: </strong> 
+        <input [(ngModel)]="etudiant.name" placeholder="name">
+    </label>
+</div> -->
+<h2>Liste des etudiants</h2>
+    <ul class="etudiants">
+        <li *ngFor="let etudiant of etuds" [class.selected]="etudiant === selectedEtudiant" (click)="onSelect(etudiant)">
+            <span class="badge">{{etudiant.id}}</span> -{{etudiant.name}}
+        </li>
+    </ul>
+<div *ngIf="selectedEtudiant">
+    <h2>Info  de {{selectedEtudiant.name | uppercase}} </h2>
+    <div><span>id: </span> {{selectedEtudiant.id}}</div>
+    <div>
+        <label>
+            <strong>name</strong>
+            <input [(ngModel)]="selectedEtudiant.name" placeholder="name">
+        </label>
+    </div>
+</div>
